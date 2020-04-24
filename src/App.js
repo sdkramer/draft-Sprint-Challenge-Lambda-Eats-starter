@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Route, Switch, Link } from "react-router-dom";
+import Form from "./Form";
+import "./index.css";
+import Home from "./Home"
 
 const App = () => {
   return (
     <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+      <header>
+        <h1>Lambda Eats</h1>
+        <Link to='/'>Home</Link>
+        <Link to='/pizza'>Order Form</Link>
+      </header>
+      <Route exact path='/'>
+        <Home />
+      </Route>
+      <Route path='/pizza'>
+        <Form />
+      </Route>
     </>
   );
 };

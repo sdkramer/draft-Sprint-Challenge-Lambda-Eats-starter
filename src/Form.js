@@ -5,8 +5,13 @@ import Pizza from "./Pizza.jpg";
 const Form = () => {
   const initialInputValues = [
     {
-      size: "",
-      toppings: "",
+      size: "large",
+      toppings: {
+        pepperoni: false,
+        sausage: false,
+        mushroom: false,
+        pineapple: false,
+      },
       instructions: "",
       username: "",
     },

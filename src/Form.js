@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./index.css";
 import Pizza from "./Pizza.jpg";
 
-const Form = () => {
+const Form = (props) => {
   const initialInputValues = [
     {
       size: "large",
@@ -17,17 +17,18 @@ const Form = () => {
     },
   ];
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputValues, setInputValues] = useState(initialInputValues);
+
 
   const changeHandler = (event) => {
     // console.log(inputValue)
 
-    setInputValue(event.target.value);
+    setInputValues(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputValue);
+    console.log(inputValues);
   };
 
   return (
@@ -91,9 +92,12 @@ const Form = () => {
         </label>
         <label>
           Your Name:
-          <input type="text" name="username" onChange={changeHandler} />
+          <input type="text" name="username" values={props.username} onChange={changeHandler} />
         </label>
+        <div className='center'>
         <button>Submit Your Order</button>
+        </div>
+       
       </form>
     </div>
   );

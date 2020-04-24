@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
+import "./index.css";
 
 const Form = () => {
   return (
-    <form>
+    <div className='formDiv'>
+    <form className=''>
       <label>
         Special Instructions:
       <input type='text'/>
       </label>
       
     </form>
+    </div>
+
   )
 }
 

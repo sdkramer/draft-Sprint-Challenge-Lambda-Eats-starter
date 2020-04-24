@@ -7,8 +7,15 @@ const Form = () => {
   const [inputValue, setInputValue] = useState('')
 
   const changeHandler = event => {
-    console.log(event.target.value)
+    console.log(inputValue)
+
+    setInputValue(event.target.value)
   }
+
+  const handleSubmit = () => {
+    console.log()
+  }
+
   return (
     <div className="formDiv">
       <header>Build Your Pizza</header>
@@ -42,6 +49,7 @@ const Form = () => {
             Your Name:
             <input type="text" onChange={changeHandler}/>
           </label>
+          <button onSubmit={() => handleSubmit()}>Submit Your Order</button>
         </form>
       </div>
   );

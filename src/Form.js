@@ -3,6 +3,12 @@ import "./index.css";
 import Pizza from "./Pizza.jpg";
 
 const Form = () => {
+
+  const [inputValue, setInputValue] = useState('')
+
+  const changeHandler = event => {
+    console.log(event)
+  }
   return (
     <div className="formDiv">
       <header>Build Your Pizza</header>

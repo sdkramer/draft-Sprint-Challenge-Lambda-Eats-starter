@@ -7,20 +7,21 @@ const Form = () => {
   const [inputValue, setInputValue] = useState('')
 
   const changeHandler = event => {
-    console.log(inputValue)
+    // console.log(inputValue)
 
     setInputValue(event.target.value)
   }
 
-  const handleSubmit = () => {
-    console.log()
+  const handleSubmit = event => {
+    event.preventDefault()
+    console.log(inputValue)
   }
 
   return (
     <div className="formDiv">
       <header>Build Your Pizza</header>
       {/* <img src={Pizza}/> */}
-        <form className="options-form">
+        <form className="options-form" onSubmit={handleSubmit}>
           <label>
             Size:
             <select className="size-options">
@@ -29,7 +30,7 @@ const Form = () => {
               <option value="small" onChange={changeHandler}>Small</option>
             </select>
           </label>
-        <div classname='checkboxes' onChange={changeHandler}>
+        <div className='checkboxes' onChange={changeHandler}>
           <h3>Select Your Toppings:</h3>
               <input type='checkbox' name='pepperoni' value='Pepperoni' onChange={changeHandler}/><label>Pepperoni</label>
               <br></br>
@@ -49,7 +50,7 @@ const Form = () => {
             Your Name:
             <input type="text" onChange={changeHandler}/>
           </label>
-          <button onSubmit={() => handleSubmit()}>Submit Your Order</button>
+          <button >Submit Your Order</button>
         </form>
       </div>
   );

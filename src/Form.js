@@ -1,8 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import Pizza from "./Pizza.jpg";
+import * as yup from 'yup';
+
+const formSchema = yup.object().shape({
+  username: yup.string().min(2, 'Name must include at least 2 characters').required('Please enter your name'),
+})
+
+
 
 const Form = (props) => {
+  const [ errorState, setErrorState ] = useState({
+    username: '',
+  })
+  
+  const [ post, setPost ] = useState([]);
+  
+  const validate = (event) => {
+    yup
+    .reach(formSchema, event.target.name)
+    .validate(event.target.value)
+    .then((valid) => {
+      setErrorState({ ...errorState, [event.target.name]: ''});
+    })
+    .catch((err) => {
+      console.log(err)
+      setErrorState({
+        ...errorState, [event.target.name]: err.errors[0],
+      })
+    })
+  }
+
   const initialInputValues = [
     {
       size: "large",

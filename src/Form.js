@@ -149,7 +149,8 @@ const Form = (props) => {
           <input type="text" name="instructions" onChange={changeHandler} />
         </label>
         <label>
-          Your Name:
+          Your Name: 
+          {errorState.username.length > 0 ? (<p className='error'>{errorState.username}</p>): null}
           <input
             type="text"
             name="username"

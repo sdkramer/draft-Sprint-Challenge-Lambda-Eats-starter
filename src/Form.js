@@ -35,7 +35,7 @@ const Form = (props) => {
   const [post, setPost] = useState([]);
 
   const validate = (event) => {
-    console.log(event)
+    // console.log(event)
     yup
       .reach(formSchema, event.target.name)
       .validate(event.target.value)
@@ -79,14 +79,22 @@ const Form = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(inputValues);
-    axios
+    console.log(inputValues.username);
+    if (inputValues.username === ""){
+      alert("Please enter your name")
+    }
+    // if (inputValues.username.length < 2) {
+    //   alert("please enter your name") }
+    else{
+      axios
       .post("https://reqres.in/api/users", inputValues)
       .then((response) => {
         // console.log(response.data)
         setPost(response.data);
       })
       .catch((err) => console.log("error"));
+    }
+
   };
 
   return (
@@ -149,7 +157,7 @@ const Form = (props) => {
           <input type="text" name="instructions" onChange={changeHandler} />
         </label>
         <label>
-          Your Name: 
+          Your Name:
           {errorState.username.length > 0 ? (<p className='error'>{errorState.username}</p>): null}
           <input
             type="text"
